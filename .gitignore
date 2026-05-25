@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Node / build artifacts (apps may also have their own .gitignore)
+node_modules/
+dist/
+release/
+.vite/
+*.log
+
+# Env
+.env
+.env.local
