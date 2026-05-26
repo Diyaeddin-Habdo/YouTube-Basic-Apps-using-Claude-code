@@ -1,0 +1,75 @@
+{
+  "name": "harmonix",
+  "version": "1.0.0",
+  "description": "Modern desktop music player",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "author": "Harmonix",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:vite\" \"npm:dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "wait-on tcp:5173 && cross-env NODE_ENV=development node scripts/launch-electron.cjs",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node scripts/launch-electron.cjs",
+    "dist": "vite build && electron-builder --win nsis --x64 --publish never",
+    "dist:portable": "vite build && electron-builder --win portable --x64 --publish never"
+  },
+  "dependencies": {
+    "howler": "^2.2.4",
+    "music-metadata": "^10.5.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "electron": "^32.1.2",
+    "electron-builder": "^25.1.8",
+    "vite": "^5.4.8",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.harmonix.player",
+    "productName": "Harmonix",
+    "copyright": "Copyright (c) 2026 Harmonix",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "!**/*.map",
+      "!**/.{eslintrc,prettierrc,gitignore,gitattributes}",
+      "!**/{tsconfig.json,tslint.json,jest.config.js}",
+      "!**/{README.md,CHANGELOG.md,LICENSE,LICENSE.md}"
+    ],
+    "asar": true,
+    "asarUnpack": [],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "Harmonix-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Harmonix",
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": ["en_US", "tr_TR"]
+    }
+  }
+}
