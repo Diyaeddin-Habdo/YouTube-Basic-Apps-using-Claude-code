@@ -1,22 +1,18 @@
 # YouTube Basic Apps using Claude Code
 
-Bu repo, YouTube videoları için Claude Code ile birlikte sıfırdan inşa ettiğim basit
-masaüstü/web uygulamalarını içerir. Her klasör bağımsız çalışan bir uygulamadır.
+This repository contains simple desktop/web applications that I built from scratch with Claude Code for YouTube videos. Each folder is an independent application.
 
-## Uygulamalar
+## Applications
 
-| Klasör | Açıklama | Stack |
+| Folder | Description | Stack |
 |---|---|---|
-| [pomodoro/](./pomodoro/) | Modern bir Pomodoro masaüstü uygulaması — odak/mola döngüleri, system tray entegrasyonu, native bildirimler ve özelleştirilebilir süreler. | Electron · React · Vite · Tailwind |
+| [pomodoro/](./pomodoro/) | A modern Pomodoro desktop application with focus/break cycles, system tray integration, native notifications, and customizable timers. | Electron · React · Vite · Tailwind |
 
-## Kullanım
+## Usage
 
-Her uygulamayı kendi klasöründe çalıştırın:
+Run each application inside its own folder:
 
 ```bash
-cd <uygulama-klasörü>
+cd <app-folder>
 npm install
 npm run dev
-```
-
-Daha fazla ayrıntı için her uygulamanın kendi `README.md` dosyasına bakın.
